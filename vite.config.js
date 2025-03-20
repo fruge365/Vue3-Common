@@ -1,6 +1,7 @@
 import { defineConfig, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import { createHtmlPlugin } from 'vite-plugin-html';
+import pxToViewport from "postcss-px-to-viewport";
 
 // 官方配置文档：https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
@@ -22,6 +23,18 @@ export default defineConfig(({ command, mode }) => {
         scss: {
           additionalData: '@import "@/assets/sass/main.scss";',
         },
+      },
+      postcss: {
+        plugins: [
+          pxToViewport({
+            viewportWidth: 1920, // 设计稿宽度
+            unitPrecision: 3, // 小数位
+            viewportUnit: "vw", // 使用 vw 进行适配
+            selectorBlackList: [], // 忽略的类名
+            minPixelValue: 1, // 最小转换单位
+            mediaQuery: false, // 允许在媒体查询中转换 px
+          }),
+        ],
       },
     },
     build: {
