@@ -1,7 +1,7 @@
 import { defineConfig, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import { createHtmlPlugin } from 'vite-plugin-html';
-import pxToViewport from "postcss-px-to-viewport";
+import postcsspxtoviewport8plugin from 'postcss-px-to-viewport-8-plugin';
 
 // 官方配置文档：https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
@@ -21,18 +21,26 @@ export default defineConfig(({ command, mode }) => {
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: '@import "@/assets/sass/main.scss";',
+          additionalData: '@use "@/assets/sass/main.scss" as *;',
+          api: 'modern-compiler'
+
         },
       },
       postcss: {
         plugins: [
-          pxToViewport({
-            viewportWidth: 1920, // 设计稿宽度
-            unitPrecision: 3, // 小数位
-            viewportUnit: "vw", // 使用 vw 进行适配
-            selectorBlackList: [], // 忽略的类名
-            minPixelValue: 1, // 最小转换单位
-            mediaQuery: false, // 允许在媒体查询中转换 px
+          postcsspxtoviewport8plugin({
+            unitToConvert: 'px', // 要转化的单位
+            viewportWidth: 1920, // 设计稿的视口宽度
+            unitPrecision: 6, // 转换后的精度，即小数点位数
+            propList: ['*'], // 能转化为vw的属性列表
+            viewportUnit: 'vw', // 希望使用的视口单位
+            fontViewportUnit: 'vw', // 字体使用的视口单位
+            selectorBlackList: [], // 需要忽略的CSS选择器
+            minPixelValue: 1, // 设置最小的转换数值，如果为1的话，只有大于1的值会被转换
+            mediaQuery: false, // 是否在媒体查询的css代码中也进行转换
+            replace: true, // 是否转换后直接更换属性值
+            exclude: [/node_modules/], // 忽略某些文件夹下的文件或特定文件
+            // 其他配置选项...
           }),
         ],
       },
