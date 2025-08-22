@@ -9,8 +9,9 @@
     "preview": "vite preview --open"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.3.2",
     "axios": "^1.7.7",
-    "naive-ui": "^2.40.1",
+    "element-plus": "^2.10.7",
     "pinia": "^2.2.2",
     "pinia-plugin-persistedstate": "^4.0.2",
     "sass": "^1.79.4",

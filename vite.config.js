@@ -59,10 +59,10 @@ export default defineConfig(({ command, mode }) => {
       port: 80, // 修改开发服务器端口为 80
       hmr: true, // 热模块替换
       proxy: {
-        '/dev-api': {
-          target: 'https://api.vvhan.com/api', // 代理到后端 API 服务
+        [env.VITE_APP_BASE_API]: {
+          target: 'https://v2.xxapi.cn/api', // 代理到后端 API 服务
           changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/dev-api/, ''), // 去除 /api 前缀
+          rewrite: (path) => path.replace(new RegExp(`^${env.VITE_APP_BASE_API}`), ''), // 去除 API 前缀
         },
       },
     },
