@@ -263,7 +263,14 @@ axios.get('/dev-api/yiyan')
 
 ---
 
+## 👨‍💻 作者信息
+
 <div align="center">
+
+**👋 作者**: fruge365
+
+[![GitHub](https://img.shields.io/badge/GitHub-fruge365-181717?style=flat-square&logo=github)](https://github.com/fruge365)
+[![CSDN](https://img.shields.io/badge/CSDN-fruge365-FC5531?style=flat-square&logo=csdn)](https://fruge365.blog.csdn.net/)
 
 **✨ 快乐编码！如果这个模板对你有帮助，请给个 Star ⭐**
 

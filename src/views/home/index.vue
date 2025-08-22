@@ -64,6 +64,28 @@
           <div class="tech-item">Axios</div>
         </div>
       </div>
+
+      <!-- 作者信息 -->
+      <div class="author-info">
+        <h2>👨💻 作者信息</h2>
+        <div class="author-card">
+          <div class="author-avatar">👋</div>
+          <div class="author-details">
+            <h3>fruge365</h3>
+            <p>前端开发者 | Vue.js 爱好者</p>
+            <div class="author-links">
+              <a href="https://github.com/fruge365" target="_blank" class="link-btn github">
+                <span class="icon">🐈</span>
+                GitHub
+              </a>
+              <a href="https://fruge365.blog.csdn.net/" target="_blank" class="link-btn csdn">
+                <span class="icon">📝</span>
+                CSDN博客
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -231,6 +253,8 @@ onMounted(() => {
   }
 
   .tech-stack {
+    margin-bottom: 60px;
+    
     h2 {
       text-align: center;
       margin-bottom: 32px;
@@ -250,6 +274,83 @@ onMounted(() => {
         border-radius: 20px;
         font-size: 14px;
         font-weight: 500;
+      }
+    }
+  }
+
+  .author-info {
+    h2 {
+      text-align: center;
+      margin-bottom: 32px;
+      color: var(--text-color);
+    }
+
+    .author-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: var(--shadow);
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: center;
+
+      .author-avatar {
+        font-size: 4rem;
+        margin-bottom: 24px;
+      }
+
+      .author-details {
+        h3 {
+          font-size: 1.5rem;
+          color: var(--text-color);
+          margin-bottom: 8px;
+        }
+
+        p {
+          color: var(--text-secondary);
+          margin-bottom: 24px;
+        }
+
+        .author-links {
+          display: flex;
+          justify-content: center;
+          gap: 16px;
+          flex-wrap: wrap;
+
+          .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            color: white;
+
+            .icon {
+              font-size: 1.2rem;
+            }
+
+            &.github {
+              background: #333;
+              
+              &:hover {
+                background: #24292e;
+                transform: translateY(-2px);
+              }
+            }
+
+            &.csdn {
+              background: #fc5531;
+              
+              &:hover {
+                background: #e04a2b;
+                transform: translateY(-2px);
+              }
+            }
+          }
+        }
       }
     }
   }
