@@ -8,5 +8,28 @@
             "source": "/:path*",
             "destination": "/index.html"
         }
+    ],
+    "headers": [
+        {
+            "source": "/prod-api/:path*",
+            "headers": [
+                {
+                    "key": "User-Agent",
+                    "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+                },
+                {
+                    "key": "Accept",
+                    "value": "application/json, text/plain, */*"
+                },
+                {
+                    "key": "Cache-Control",
+                    "value": "no-cache, no-store, must-revalidate"
+                },
+                {
+                    "key": "Access-Control-Allow-Credentials",
+                    "value": "true"
+                }
+            ]
+        }
     ]
 }
