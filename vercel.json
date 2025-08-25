@@ -3,6 +3,10 @@
         {
             "source": "/:path*",
             "destination": "/index.html"
+        },
+        {
+            "source": "/dev-api/:path*",
+            "destination": "https://v2.xxapi.cn/api/:path*"
         }
     ]
 }
