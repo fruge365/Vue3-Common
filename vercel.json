@@ -1,12 +1,12 @@
 {
     "rewrites": [
         {
-            "source": "/:path*",
-            "destination": "/index.html"
-        },
-        {
             "source": "/prod-api/:path*",
             "destination": "https://v2.xxapi.cn/api/:path*"
+        },
+        {
+            "source": "/:path*",
+            "destination": "/index.html"
         }
     ]
 }
