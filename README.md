@@ -9,7 +9,53 @@
 [![Element Plus](https://img.shields.io/badge/Element%20Plus-2.x-409EFF?style=flat-square&logo=element)](https://element-plus.org/)
 [![Pinia](https://img.shields.io/badge/Pinia-2.x-FFD859?style=flat-square&logo=pinia)](https://pinia.vuejs.org/)
 
+**开箱即用的 Vue3 项目模板**：路由、状态、请求封装、主题切换、国际化全部配好。
+
 </div>
+
+---
+
+## 🌐 在线预览
+
+**https://vue3-common.vercel.app**
+
+> 若链接无法访问，请按下方「快速开始」本地运行。
+
+---
+
+## 📁 目录结构
+
+```text
+Vue3-Common/
+├─ src/
+│  ├─ api/                   接口定义（按业务分文件）
+│  ├─ assets/
+│  │  ├─ sass/
+│  │  │  ├─ main.scss        主样式入口
+│  │  │  └─ theme.scss       主题 CSS 变量（亮/暗）
+│  │  └─ vue.svg
+│  ├─ composables/
+│  │  └─ useTheme.js         主题切换组合式函数
+│  ├─ layout/
+│  │  └─ index.vue           整体布局（侧边栏 + 头部 + 内容区）
+│  ├─ router/
+│  │  ├─ index.js            路由实例与守卫
+│  │  └─ routes.js           路由表（懒加载）
+│  ├─ store/
+│  │  ├─ main.js             示例 store（含持久化）
+│  │  └─ users.js            用户 store
+│  ├─ utils/
+│  │  ├─ locale.js           国际化：中/英文案与 Element Plus 语言包
+│  │  └─ request.js          axios 封装
+│  ├─ views/home/index.vue   首页
+│  ├─ App.vue
+│  ├─ main.js
+│  └─ pinia.js               Pinia 实例与持久化插件注册
+├─ package.json
+└─ README.md
+```
+
+---
 
 ---
 
@@ -275,3 +321,28 @@ axios.get('/dev-api/yiyan')
 **✨ 快乐编码！如果这个模板对你有帮助，请给个 Star ⭐**
 
 </div>
+
+---
+
+## ❓ 常见问题
+
+**启动后端口被占用？**
+`dev` 脚本带了 `--strictPort`，端口被占用时会直接报错而不是自动换端口。先释放 5173 端口，或修改 `vite.config.js` 里的 `server.port`。
+
+**状态刷新后丢失？**
+Pinia 持久化由 `pinia-plugin-persistedstate` 提供，默认并未对所有 store 生效。需要在 store 里显式写 `persist: true` 或 `persist: { key, storage }`，并确认 `src/pinia.js` 中已 `pinia.use(piniaPluginPersistedstate)`。
+
+**切换语言后 Element Plus 组件还是中文？**
+Element Plus 的语言包通过 `src/utils/locale.js` 里的 `localeMap` 注入 `ElConfigProvider`。切换时需同时更新 `currentLocale.value`，仅改自定义 `messages` 不会影响组件内置文案。
+
+**暗色主题样式没变化？**
+`useTheme` 通过给 `<html>` 加 `dark` class 生效，因此所有颜色必须引用 `theme.scss` 中的 CSS 变量。写死颜色值的地方不会跟随主题变化。
+
+**接口请求基地址在哪里配？**
+`src/utils/request.js` 创建 axios 实例处；如需按环境区分，在项目根目录添加 `.env.development` / `.env.production` 并读取 `import.meta.env`。
+
+---
+
+## 📄 许可
+
+仅供学习与参考使用。
